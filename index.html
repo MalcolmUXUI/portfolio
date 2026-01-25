@@ -309,6 +309,96 @@ background: rgba(255, 250, 241, .82);
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
+    /* ===== Add warmth + texture (drop-in) ===== */
+
+/* Slightly richer ink + warmer paper */
+:root{
+  --paper:#fff6e6;
+  --paper2:#fffaf1; /* keep your current vibe */
+  --ink:#0f172a;
+  --ink2:#111418;   /* your current text */
+  --wash1: rgba(245,158,11,.12);
+  --wash2: rgba(37,99,235,.10);
+  --wash3: rgba(15,118,110,.08);
+}
+
+/* Paper texture + faint grain overlay */
+body{
+  color: var(--ink2);
+  background:
+    radial-gradient(1100px 640px at 18% 0%, var(--wash1), transparent 60%),
+    radial-gradient(1200px 720px at 88% 10%, var(--wash2), transparent 58%),
+    radial-gradient(950px 640px at 50% 100%, var(--wash3), transparent 55%),
+    linear-gradient(180deg, var(--paper), var(--paper2));
+}
+
+/* Fixed grain layer (pure CSS, no images) */
+body::before{
+  content:"";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: .18;
+  mix-blend-mode: multiply;
+  background:
+    repeating-linear-gradient(0deg,
+      rgba(17,20,24,.035) 0px,
+      rgba(17,20,24,.035) 1px,
+      transparent 1px,
+      transparent 3px),
+    repeating-linear-gradient(90deg,
+      rgba(17,20,24,.02) 0px,
+      rgba(17,20,24,.02) 1px,
+      transparent 1px,
+      transparent 4px);
+}
+
+/* Make sure your real content sits above the grain */
+.nav, main, footer{ position: relative; z-index: 1; }
+
+/* A little “designed” accent on cards and callouts */
+.card::before,
+.callout::before,
+.schedule-card::before{
+  content:"";
+  position:absolute;
+  left:0; top:0; right:0;
+  height:4px;
+  background: linear-gradient(90deg, rgba(245,158,11,.85), rgba(37,99,235,.75), rgba(15,118,110,.65));
+  opacity:.55;
+}
+
+/* Add a gentle inner highlight so whites feel less flat */
+.card,
+.callout,
+.schedule-card{
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.74));
+}
+
+/* Slightly richer hover feel */
+.card:hover,
+.callout:hover,
+.schedule-card:hover{
+  box-shadow: 0 22px 52px rgba(17,20,24,.14);
+}
+
+/* Optional: make section titles feel more “branded” */
+.section-title{
+  position:relative;
+  display:inline-block;
+}
+.section-title::after{
+  content:"";
+  display:block;
+  height:3px;
+  margin-top:10px;
+  border-radius:999px;
+  background: linear-gradient(90deg, rgba(245,158,11,.75), rgba(37,99,235,.55));
+  opacity:.55;
+  width: 62%;
+}
   </style>
 </head>
 
