@@ -1,0 +1,338 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2685.3">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!doctype html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="utf-8" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;Mark Malcolm | UX Strategy, Design Systems, Brand&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta name="description" content="Clear customer paths. Consistent interfaces. Brands people trust." /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>:root{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--bg:#fbfaf7;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--card:#ffffff;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--text:#111418;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--muted:#4a5568;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--border:#e7e2d8;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--accent:#1f6feb;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--accent2:#0f766e;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--shadow: 0 10px 30px rgba(17,20,24,.08);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--radius: 16px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--max: 1100px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>*{ box-sizing:border-box; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>html{ scroll-behavior:smooth; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>body{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin:0;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font: 16px/1.55 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color:var(--text);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: radial-gradient(1200px 600px at 20% 0%, rgba(31,111,235,.10), transparent 55%),</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>radial-gradient(900px 500px at 90% 10%, rgba(15,118,110,.10), transparent 55%),</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>var(--bg);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>a{ color:inherit; text-decoration:none; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>a:focus{ outline:3px solid rgba(31,111,235,.35); outline-offset:3px; border-radius:10px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.wrap{ max-width:var(--max); margin:0 auto; padding:24px; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* Top nav */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.nav{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>position:sticky; top:0; z-index:50;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>backdrop-filter:saturate(180%) blur(10px);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(251,250,247,.75);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-bottom: 1px solid rgba(231,226,216,.8);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.nav-inner{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>max-width:var(--max); margin:0 auto; padding:14px 24px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display:flex; align-items:center; justify-content:space-between; gap:16px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.brand{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display:flex; align-items:center; gap:10px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-weight:700; letter-spacing:.2px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.dot{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>width:10px; height:10px; border-radius:999px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: linear-gradient(135deg, var(--accent), var(--accent2));</p>
+<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 0 0 6px rgba(31,111,235,.10);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.nav-links{ display:flex; align-items:center; gap:14px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.nav-links a{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding:8px 10px; border-radius:12px; color:var(--muted);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>transition: background .2s ease, color .2s ease;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.nav-links a:hover{ background: rgba(17,20,24,.05); color:var(--text); }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>.btn{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display:inline-flex; align-items:center; justify-content:center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding:10px 14px; border-radius:999px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border:1px solid rgba(31,111,235,.25);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(31,111,235,.12);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: #0b3d91;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-weight:600;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>transition: transform .15s ease, background .2s ease, border-color .2s ease;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>will-change: transform;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.btn:hover{ transform: translateY(-1px); background: rgba(31,111,235,.18); border-color: rgba(31,111,235,.35); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.btn:active{ transform: translateY(0px); }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* Hero */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>header{ padding:56px 0 22px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.kicker{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display:inline-flex; gap:10px; align-items:center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding:8px 12px; border-radius:999px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border:1px solid rgba(231,226,216,1);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(255,255,255,.65);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: var(--muted);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 6px 20px rgba(17,20,24,.05);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.kicker strong{ color: var(--text); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>h1{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin:18px 0 10px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: clamp(34px, 5vw, 56px);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>line-height:1.04;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>letter-spacing:-.6px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.subhead{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>max-width: 70ch;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 18px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: var(--muted);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin: 0 0 18px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.hero-actions{ display:flex; gap:12px; flex-wrap:wrap; margin-top:14px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.ghost{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border:1px solid rgba(231,226,216,1);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(255,255,255,.6);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: var(--text);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.ghost:hover{ background: rgba(255,255,255,.9); }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* Sections */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>section{ padding:34px 0; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.section-title{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin:0 0 8px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 26px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>letter-spacing:-.3px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.section-lede{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin:0 0 18px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: var(--muted);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>max-width: 75ch;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* Cards */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.grid{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display:grid;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>grid-template-columns: repeat(12, 1fr);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gap:16px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.card{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>grid-column: span 12;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(255,255,255,.82);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border:1px solid rgba(231,226,216,1);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: var(--radius);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: var(--shadow);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding:18px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>transition: transform .18s ease, box-shadow .2s ease, border-color .2s ease;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>position:relative;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>overflow:hidden;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.card:hover{ transform: translateY(-2px); border-color: rgba(31,111,235,.25); box-shadow: 0 18px 40px rgba(17,20,24,.12); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.card h3{ margin:0 0 6px; font-size: 18px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.meta{ color: var(--muted); margin:0 0 10px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.win{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin:12px 0 0;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding-top:12px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-top:1px solid rgba(231,226,216,1);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: #0f172a;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-weight:600;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.pillrow{ display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.pill{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-size: 13px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding:6px 10px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius:999px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(17,20,24,.04);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border:1px solid rgba(231,226,216,1);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: var(--muted);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* Two-column layout for what I do */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.cols{ display:grid; grid-template-columns: 1fr; gap:16px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.callout{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(255,255,255,.74);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border:1px solid rgba(231,226,216,1);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: var(--radius);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding:18px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.callout h3{ margin:0 0 8px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.callout p{ margin:0; color:var(--muted); }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* Footer */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>footer{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding:30px 0 44px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color: var(--muted);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-top: 1px solid rgba(231,226,216,1);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 22px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.fine{ font-size: 14px; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>/* Responsive */</p>
+<p class="p1"><span class="Apple-converted-space">    </span>@media (min-width: 840px){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>.card{ grid-column: span 4; }</p>
+<p class="p1"><span class="Apple-converted-space">      </span>.cols{ grid-template-columns: 1fr 1fr 1fr; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="nav"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="nav-inner"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;a class="brand" href="#top"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;span class="dot" aria-hidden="true"&gt;&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;span&gt;Mark Malcolm&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="nav-links" aria-label="Primary"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;a href="#work"&gt;Work&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;a href="#about"&gt;About&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;a class="btn" href="#contact"&gt;Let’s Talk&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;main id="top" class="wrap"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;header&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="kicker"&gt;&lt;strong&gt;UX Consultant&lt;/strong&gt;&lt;span&gt;•&lt;/span&gt;&lt;span&gt;Strategy, Systems, Brand&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h1&gt;Clear customer paths. Consistent interfaces. Brands people trust.&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p class="subhead"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>I take messy processes and turn them into clear paths customers can follow, removing friction and confusion so people move faster, feel confident, and make fewer mistakes.</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="hero-actions"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;a class="btn" href="#work"&gt;See Case Studies&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;a class="btn ghost" href="#contact"&gt;Book a Call&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/header&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;section id="work"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h2 class="section-title"&gt;Here’s What That Looks Like in Real Life&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p class="section-lede"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>A few projects where I simplified the path, built the system, and helped teams ship work that feels consistent and trustworthy.</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="grid"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;article class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;h3&gt;BigIron&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;p class="meta"&gt;Item-focused redesign for inventory intake and operational workflows across teams.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="pillrow"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="pill"&gt;Complex workflows&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="pill"&gt;Role-based views&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="pill"&gt;Standardization&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;p class="win"&gt;The win: Guided intake plus role-based views turned rework into a first-pass standard.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/article&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;article class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;h3&gt;Cedar Bluff Technologies&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;p class="meta"&gt;Co-created a fundable product concept that prevents bad data at the source during equipment intake.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="pillrow"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="pill"&gt;Product story&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="pill"&gt;Trust and clarity&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="pill"&gt;Investor-ready narrative&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;p class="win"&gt;The win: A believable story and experience direction for accuracy at the moment records are created.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/article&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;article class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;h3&gt;Moss Rock Ranch&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;p class="meta"&gt;Defined the brand foundation for a digital overhaul, preserved through a store-first pivot.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="pillrow"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="pill"&gt;Brand strategy&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="pill"&gt;Voice and tone&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="pill"&gt;Audience segments&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;p class="win"&gt;The win: A clear brand system the owners could use immediately, and reuse later.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/article&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;section id="help"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h2 class="section-title"&gt;How I Can Help&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p class="section-lede"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>Plain-English work that helps teams move faster, reduce risk, and look like one cohesive product.</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="cols"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="callout"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;h3&gt;UX Strategy for Complex Workflows&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;p&gt;I turn messy processes into clear paths, removing friction so people move faster, feel confident, and make fewer mistakes.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="callout"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;h3&gt;Design Systems and UI Architecture&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;p&gt;I create design building blocks and simple guidelines so everything looks and behaves consistently as you grow, one product, not ten pages designed on ten different days.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="callout"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;h3&gt;Brand Strategy, Copywriting, and Visual Design&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;p&gt;I combine research with what you already know about your customers to shape a brand that sounds human and looks modern, in a way people remember and trust.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;section id="approach"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h2 class="section-title"&gt;How We’ll Tackle It&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p class="section-lede"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>A simple process that keeps us honest, avoids rework, and gets to a result you can ship.</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="callout"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p class="fine"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>We start by defining the real problem and what success looks like. Then we map where people get stuck, validate the direction early, and iterate until the experience feels obvious. If it ships, we listen for feedback and close the loop with clear next steps.</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;section id="about"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h2 class="section-title"&gt;About Me&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p class="section-lede"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>I’m a UX consultant who likes clarity, warm design, and details that make things feel alive without feeling crowded.</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="callout"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p class="fine"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>I work best with teams building complex products, internal tools, or brands that need to feel modern and trustworthy. My goal is to make the experience feel simple for the user, and straightforward to maintain for the team.</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;section id="contact"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h2 class="section-title"&gt;Let’s Talk&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p class="section-lede"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>Tell me what you’re building and where it feels stuck, and we’ll figure out the next best step.</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="callout"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p class="fine"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>Email: &lt;a href="mailto:hello@example.com" style="color:var(--accent); text-decoration:underline;"&gt;hello@example.com&lt;/a&gt;&lt;br/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>Calendar: &lt;a href="#" style="color:var(--accent); text-decoration:underline;"&gt;add your booking link&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;footer&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="fine"&gt;© &lt;span id="y"&gt;&lt;/span&gt; Mark Malcolm. Built simple on purpose.&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/footer&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/main&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById("y").textContent = new Date().getFullYear();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
