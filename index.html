@@ -216,6 +216,20 @@ background: rgba(255, 250, 241, .82);
   *{ transition:none !important; }
   html{ scroll-behavior:auto; }
 }
+.about-grid{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap:16px;
+}
+.about-h3{
+  margin:0 0 8px;
+  font-size: 18px;
+}
+@media (min-width: 840px){
+  .about-grid{
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
   </style>
 </head>
 
@@ -322,35 +336,6 @@ background: rgba(255, 250, 241, .82);
         </p>
       </div>
     </section>
-
-<section id="about">
-  <h2 class="section-title">About Me</h2>
-  <p class="section-lede">
-    I’m Mark Malcolm, a UX consultant, product designer, and brand strategist who helps teams turn complex, high-stakes work into clear paths people can actually follow.
-  </p>
-
-  <div class="callout">
-    <p class="fine">
-      Most of my work lives where strategy meets real operations. I’ve designed enterprise workflows for auctions and inventory intelligence, built design systems that scale, and helped early-stage teams shape product narrative and go-to-market clarity without losing the human side of the experience.
-    </p>
-
-    <p class="fine">
-      Before I went deep into UX and branding, I came up through hospitality, including leading concierge teams in fast-paced, high-touch environments. That background trained my instincts for clarity, trust, and decision-making under pressure, which is basically UX with higher stakes and better shoes.
-    </p>
-
-    <p class="fine">
-      My style is research-driven and practical. I like pairing proven research methods with classic design principles and plain language, so users, stakeholders, designers, and developers stay aligned and the work actually ships.
-    </p>
-
-    <p class="fine">
-      I’ve been doing this for 15+ years, often through word-of-mouth, which usually happens when teams feel heard, the process is clear, and the end result holds up in the real world. These days I’m especially energized by the intersection of branding, UX, and AI-driven tools that help people move faster without adding confusion.
-    </p>
-
-    <p class="fine">
-      If you’re building something complex, and you want it to feel simple, cohesive, and trustworthy, I’m happy to talk through what’s stuck and help you find the next best step.
-    </p>
-  </div>
-</section>
 
     <section id="contact">
       <h2 class="section-title">Let’s Talk</h2>
