@@ -397,13 +397,8 @@
 .callout > h3{ margin:0 0 8px; }
 .callout > p{ margin:0; }
 /* ============================================================
-   APPROACH (Process list) — drop-in replacement
-   ------------------------------------------------------------
-   Paste this as a complete replacement for your current
-   .process / .process-step / process-* rules.
+   APPROACH (Process list)
    ============================================================ */
-
-/* Wrapper list */
 .process{
   list-style: none;
   margin: 0;
@@ -411,14 +406,12 @@
   counter-reset: step;
 }
 
-/* Each row */
 .process-step{
   counter-increment: step;
-
   display: grid;
   grid-template-columns: 52px 1fr;
   column-gap: 16px;
-
+  align-items: start;
   padding: 14px 0;
   border-top: 1px solid var(--border);
 }
@@ -428,67 +421,63 @@
   padding-top: 0;
 }
 
-.process-step:last-child{
-  padding-bottom: 0;
-}
-
-/* Number badge (uses your gradient family, but with clearer separation) */
-.process-step::before{
-  content: counter(step);
-  display: grid;
-  place-items: center;
-
+.process-num{
   width: 40px;
   height: 40px;
   border-radius: 14px;
+  display: grid;
+  place-items: center;
+  align-self: start;
+  margin-top: 2px;
+  border: 1px solid rgba(231,226,216,.9);
+  background: rgba(17,20,24,.06);
+}
 
+/* Put the counter text on a pseudo so it can read counter(step) */
+.process-num::before{
+  content: counter(step);
   font-size: 20px;
   font-weight: 800;
   line-height: 1;
-
-  align-self: start;
-  margin-top: 2px;
-
   color: rgba(17,20,24,.32);
-  background: rgba(17,20,24,.06);
-  border: 1px solid rgba(231,226,216,.9);
 }
 
-/* Step-specific colors (distinct: amber → burnt amber → blue → teal → green-teal) */
-.process-step:nth-child(1)::before{
-  color: rgba(245,158,11,.75);
+/* Step colors */
+.process-step:nth-child(1) .process-num{
   background: rgba(245,158,11,.14);
   border-color: rgba(245,158,11,.22);
 }
-.process-step:nth-child(2)::before{
-  color: rgba(217,119,6,.75);
+.process-step:nth-child(1) .process-num::before{ color: rgba(245,158,11,.75); }
+
+.process-step:nth-child(2) .process-num{
   background: rgba(217,119,6,.13);
   border-color: rgba(217,119,6,.22);
 }
-.process-step:nth-child(3)::before{
-  color: rgba(37,99,235,.72);
+.process-step:nth-child(2) .process-num::before{ color: rgba(217,119,6,.75); }
+
+.process-step:nth-child(3) .process-num{
   background: rgba(37,99,235,.12);
   border-color: rgba(37,99,235,.22);
 }
-.process-step:nth-child(4)::before{
-  color: rgba(15,118,110,.74);
+.process-step:nth-child(3) .process-num::before{ color: rgba(37,99,235,.72); }
+
+.process-step:nth-child(4) .process-num{
   background: rgba(15,118,110,.12);
   border-color: rgba(15,118,110,.22);
 }
-.process-step:nth-child(5)::before{
-  color: rgba(5,150,105,.74);
+.process-step:nth-child(4) .process-num::before{ color: rgba(15,118,110,.74); }
+
+.process-step:nth-child(5) .process-num{
   background: rgba(5,150,105,.12);
   border-color: rgba(5,150,105,.22);
 }
+.process-step:nth-child(5) .process-num::before{ color: rgba(5,150,105,.74); }
 
-/* Right column layout */
-.process-head,
-.process-why,
-.process-out{
-  grid-column: 2;
+/* Right column */
+.process-body{
+  min-width: 0;
 }
 
-/* Title */
 .process-title{
   margin: 0;
   font-size: 20px;
@@ -496,23 +485,14 @@
   letter-spacing: -.2px;
 }
 
-/* Tight vertical rhythm:
-   description stays closer to its title than to the next step */
-.process-why{
-  margin: 4px 0 0;
-}
+.process-why{ margin: 4px 0 0; }
+.process-out{ margin: 6px 0 0; }
 
-.process-out{
-  margin: 6px 0 0;
-}
-
-/* Output label emphasis */
 .process-out strong{
   color: var(--text);
   font-weight: 700;
 }
 
-/* Mobile tightening */
 @media (max-width: 520px){
   .process-step{
     grid-template-columns: 44px 1fr;
@@ -520,18 +500,15 @@
     padding: 12px 0;
   }
 
-  .process-step::before{
+  .process-num{
     width: 34px;
     height: 34px;
     border-radius: 12px;
-    font-size: 17px;
     margin-top: 1px;
   }
 
-  .process-title{
-    font-size: 18px;
-  }
-
+  .process-num::before{ font-size: 17px; }
+  .process-title{ font-size: 18px; }
   .process-why{ margin-top: 3px; }
   .process-out{ margin-top: 5px; }
 }
@@ -1023,8 +1000,10 @@
 
   <div class="callout surface">
     <ol class="process" aria-label="Project process steps">
-      <li class="process-step">
-        <div class="process-head">
+<li class="process-step">
+  <span class="process-num" aria-hidden="true"></span>
+
+  <div class="process-body">
           
           <h3 class="process-title">Define the Target</h3>
         </div>
@@ -1036,9 +1015,10 @@
         </p>
       </li>
 
-      <li class="process-step">
-        <div class="process-head">
-          
+<li class="process-step">
+  <span class="process-num" aria-hidden="true"></span>
+
+  <div class="process-body">
           <h3 class="process-title">Map the Reality</h3>
         </div>
         <p class="fine process-why">
@@ -1049,8 +1029,10 @@
         </p>
       </li>
 
-      <li class="process-step">
-        <div class="process-head">
+<li class="process-step">
+  <span class="process-num" aria-hidden="true"></span>
+
+  <div class="process-body">
           
           <h3 class="process-title">Design the Next Version</h3>
         </div>
@@ -1062,8 +1044,10 @@
         </p>
       </li>
 
-      <li class="process-step">
-        <div class="process-head">
+<li class="process-step">
+  <span class="process-num" aria-hidden="true"></span>
+
+  <div class="process-body">
          
           <h3 class="process-title">Validate Before You Build</h3>
         </div>
@@ -1075,8 +1059,10 @@
         </p>
       </li>
 
-      <li class="process-step">
-        <div class="process-head">
+<li class="process-step">
+  <span class="process-num" aria-hidden="true"></span>
+
+  <div class="process-body">
           
           <h3 class="process-title">Ship, Learn, Tighten</h3>
         </div>
