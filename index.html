@@ -396,8 +396,8 @@
     .callout{ padding:18px; }
     .callout h3{ margin:0 0 8px; }
     .callout p{ margin:0; }
-    /* ============================================================
-   Approach: Process list (systematic, consistent, no double numbering)
+ /* ============================================================
+   Approach: Process list (systematic + tight vertical rhythm)
    ============================================================ */
 .process{
   list-style: none;
@@ -428,14 +428,11 @@
   padding-top: 2px; /* aligns with title */
 }
 
+/* Keep all content in the right column */
 .process-head,
 .process-why,
 .process-out{
   grid-column: 2;
-}
-
-.process-head{
-  margin: 0;
 }
 
 .process-title{
@@ -445,16 +442,21 @@
   letter-spacing: -.2px;
 }
 
+/* Tighten paragraph spacing so it stays with its title */
 .process-why,
 .process-out{
-  margin: 8px 0 0;
+  margin: 6px 0 0; /* closer to title */
 }
 
-/* Make the “Output:” line read like a labeled deliverable */
-.process-out{
-  color: var(--muted);
+/* Create clear separation before the NEXT step/title */
+.process-step{
+  margin-bottom: 10px;
+}
+.process-step:last-child{
+  margin-bottom: 0;
 }
 
+/* Output line reads like a deliverable label */
 .process-out strong{
   color: var(--text);
   font-weight: 700;
@@ -967,7 +969,7 @@
           We agree on the real problem, the users involved, and what success looks like. This prevents solving the wrong thing elegantly.
         </p>
         <p class="fine process-out">
-          Output: a short problem statement, success criteria, and constraints.
+          <strong>Output:</strong> a short problem statement, success criteria, and constraints.
         </p>
       </li>
 
@@ -980,7 +982,7 @@
           We document the current workflow and handoffs, then mark where people get stuck, repeat questions, or make avoidable mistakes.
         </p>
         <p class="fine process-out">
-          Output: workflow map, friction points, and priority opportunities.
+          <strong>Output:</strong> workflow map, friction points, and priority opportunities.
         </p>
       </li>
 
@@ -993,7 +995,7 @@
           We propose a clearer path with roles, steps, and guardrails, then make the next action obvious at every decision point.
         </p>
         <p class="fine process-out">
-          Output: proposed flow, UI structure, content guidelines, and edge cases.
+          <strong>Output:</strong> proposed flow, UI structure, content guidelines, and edge cases.
         </p>
       </li>
 
@@ -1006,7 +1008,7 @@
           We test the direction early, using lightweight prototypes or structured reviews, so you don’t pay engineering costs for assumptions.
         </p>
         <p class="fine process-out">
-          Output: validated changes, notes, and final decisions.
+          <strong>Output:</strong> validated changes, notes, and final decisions.
         </p>
       </li>
 
@@ -1019,7 +1021,7 @@
           Once it’s live, we watch for repeat questions, missed steps, and support load, then tighten the system so it holds up over time.
         </p>
         <p class="fine process-out">
-          Output: iteration list, updated standards, and next improvements.
+          <strong>Output:</strong> iteration list, updated standards, and next improvements.
         </p>
       </li>
     </ol>
