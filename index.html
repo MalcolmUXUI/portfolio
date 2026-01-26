@@ -396,9 +396,14 @@
 .callout{ padding:18px; }
 .callout > h3{ margin:0 0 8px; }
 .callout > p{ margin:0; }
- /* ============================================================
-   Approach: Process list (systematic + tight vertical rhythm)
+/* ============================================================
+   APPROACH (Process list) — drop-in replacement
+   ------------------------------------------------------------
+   Paste this as a complete replacement for your current
+   .process / .process-step / process-* rules.
    ============================================================ */
+
+/* Wrapper list */
 .process{
   list-style: none;
   margin: 0;
@@ -406,11 +411,14 @@
   counter-reset: step;
 }
 
+/* Each row */
 .process-step{
   counter-increment: step;
+
   display: grid;
-  grid-template-columns: 56px 1fr;
+  grid-template-columns: 52px 1fr;
   column-gap: 16px;
+
   padding: 14px 0;
   border-top: 1px solid var(--border);
 }
@@ -420,53 +428,67 @@
   padding-top: 0;
 }
 
-/* Color-coded step numbers (pulls from your gradient bar palette) */
+.process-step:last-child{
+  padding-bottom: 0;
+}
+
+/* Number badge (uses your gradient family, but with clearer separation) */
 .process-step::before{
   content: counter(step);
   display: grid;
   place-items: center;
-  width: 44px;
-  height: 44px;
+
+  width: 40px;
+  height: 40px;
   border-radius: 14px;
-  font-size: 22px;
+
+  font-size: 20px;
   font-weight: 800;
   line-height: 1;
-align-self: start;
+
+  align-self: start;
   margin-top: 2px;
-  /* default fallback */
+
   color: rgba(17,20,24,.32);
   background: rgba(17,20,24,.06);
+  border: 1px solid rgba(231,226,216,.9);
 }
 
-/* Step-specific tint + numeral color (more distinct) */
+/* Step-specific colors (distinct: amber → burnt amber → blue → teal → green-teal) */
 .process-step:nth-child(1)::before{
-  color: rgba(245,158,11,.70);      /* amber */
-  background: rgba(245,158,11,.16);
+  color: rgba(245,158,11,.75);
+  background: rgba(245,158,11,.14);
+  border-color: rgba(245,158,11,.22);
 }
 .process-step:nth-child(2)::before{
-  color: rgba(217,119,6,.70);       /* burnt amber */
-  background: rgba(217,119,6,.14);
+  color: rgba(217,119,6,.75);
+  background: rgba(217,119,6,.13);
+  border-color: rgba(217,119,6,.22);
 }
 .process-step:nth-child(3)::before{
-  color: rgba(37,99,235,.70);       /* blue */
-  background: rgba(37,99,235,.14);
+  color: rgba(37,99,235,.72);
+  background: rgba(37,99,235,.12);
+  border-color: rgba(37,99,235,.22);
 }
 .process-step:nth-child(4)::before{
-  color: rgba(15,118,110,.72);      /* teal */
-  background: rgba(15,118,110,.14);
+  color: rgba(15,118,110,.74);
+  background: rgba(15,118,110,.12);
+  border-color: rgba(15,118,110,.22);
 }
 .process-step:nth-child(5)::before{
-  color: rgba(5,150,105,.70);       /* green-teal (more green than step 4) */
-  background: rgba(5,150,105,.14);
+  color: rgba(5,150,105,.74);
+  background: rgba(5,150,105,.12);
+  border-color: rgba(5,150,105,.22);
 }
 
-/* Keep all content in the right column */
+/* Right column layout */
 .process-head,
 .process-why,
 .process-out{
   grid-column: 2;
 }
 
+/* Title */
 .process-title{
   margin: 0;
   font-size: 20px;
@@ -474,48 +496,44 @@ align-self: start;
   letter-spacing: -.2px;
 }
 
-/* Tighten paragraph spacing so it stays with its title */
+/* Tight vertical rhythm:
+   description stays closer to its title than to the next step */
 .process-why{
-  margin: 4px 0 0;          /* was 6px */
+  margin: 4px 0 0;
 }
 
 .process-out{
-  margin: 6px 0 0;          /* keeps Output attached but distinct */
+  margin: 6px 0 0;
 }
 
-/* Create clear separation before the NEXT step/title */
-.process-step{
-  margin-bottom: 10px;
-    padding: 10px 0;          /* was 14px 0 */
-  row-gap: 0;               /* just to be explicit */
-}
-    
-.process-step:last-child{
-  margin-bottom: 0;
-}
-
-/* Output line reads like a deliverable label */
+/* Output label emphasis */
 .process-out strong{
   color: var(--text);
   font-weight: 700;
 }
 
-/* Slightly tighter on small screens */
+/* Mobile tightening */
 @media (max-width: 520px){
   .process-step{
     grid-template-columns: 44px 1fr;
     column-gap: 12px;
+    padding: 12px 0;
   }
+
   .process-step::before{
-    width: 36px;
-    height: 36px;
+    width: 34px;
+    height: 34px;
     border-radius: 12px;
+    font-size: 17px;
+    margin-top: 1px;
+  }
+
+  .process-title{
     font-size: 18px;
   }
-  .process-title{ 
-    font-size: 18px; 
-      margin: 0;                /* keep it crisp */
-  }
+
+  .process-why{ margin-top: 3px; }
+  .process-out{ margin-top: 5px; }
 }
 
     /* ============================================================
