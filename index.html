@@ -483,10 +483,18 @@
   font-size: 20px;
   line-height: 1.2;
   letter-spacing: -.2px;
+  grid-column: 2;
 }
 
-.process-why{ margin: 4px 0 0; }
-.process-out{ margin: 6px 0 0; }
+.process-why{ 
+  margin: 4px 0 0;
+  grid-column: 2;
+}
+    
+.process-out{
+  margin: 6px 0 0; 
+grid-column: 2;
+}
 
 .process-out strong{
   color: var(--text);
@@ -1002,17 +1010,16 @@
     <ol class="process" aria-label="Project process steps">
 <li class="process-step">
   <span class="process-num" aria-hidden="true"></span>
-
   <div class="process-body">
-          
-          <h3 class="process-title">Define the Target</h3>
-        </div>
+    <h3 class="process-title">Define the Target</h3>
+      
         <p class="fine process-why">
           We agree on the real problem, the users involved, and what success looks like. This prevents solving the wrong thing elegantly.
         </p>
         <p class="fine process-out">
           <strong>Output:</strong> a short problem statement, success criteria, and constraints.
         </p>
+      </div>
       </li>
 
 <li class="process-step">
@@ -1020,13 +1027,14 @@
 
   <div class="process-body">
           <h3 class="process-title">Map the Reality</h3>
-        </div>
+       
         <p class="fine process-why">
           We document the current workflow and handoffs, then mark where people get stuck, repeat questions, or make avoidable mistakes.
         </p>
         <p class="fine process-out">
           <strong>Output:</strong> workflow map, friction points, and priority opportunities.
         </p>
+    </div>
       </li>
 
 <li class="process-step">
@@ -1035,13 +1043,14 @@
   <div class="process-body">
           
           <h3 class="process-title">Design the Next Version</h3>
-        </div>
+ 
         <p class="fine process-why">
           We propose a clearer path with roles, steps, and guardrails, then make the next action obvious at every decision point.
         </p>
         <p class="fine process-out">
           <strong>Output:</strong> proposed flow, UI structure, content guidelines, and edge cases.
         </p>
+      </div>
       </li>
 
 <li class="process-step">
@@ -1050,13 +1059,14 @@
   <div class="process-body">
          
           <h3 class="process-title">Validate Before You Build</h3>
-        </div>
+  
         <p class="fine process-why">
           We test the direction early, using lightweight prototypes or structured reviews, so you don’t pay engineering costs for assumptions.
         </p>
         <p class="fine process-out">
           <strong>Output:</strong> validated changes, notes, and final decisions.
         </p>
+      </div>
       </li>
 
 <li class="process-step">
@@ -1065,13 +1075,14 @@
   <div class="process-body">
           
           <h3 class="process-title">Ship, Learn, Tighten</h3>
-        </div>
+        
         <p class="fine process-why">
           Once it’s live, we watch for repeat questions, missed steps, and support load, then tighten the system so it holds up over time.
         </p>
         <p class="fine process-out">
           <strong>Output:</strong> iteration list, updated standards, and next improvements.
         </p>
+      </div>
       </li>
     </ol>
   </div>
