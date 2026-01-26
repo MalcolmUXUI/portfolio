@@ -51,6 +51,129 @@
       --wash3: rgba(15,118,110,.08);
     }
 
+    /* =========================
+   HOW I CAN HELP: Master-detail
+   ========================= */
+
+.help-split{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap:16px;
+  align-items:start;
+}
+
+/* Left list */
+.help-list{
+  display:grid;
+  gap:12px;
+}
+
+.help-item{
+  text-align:left;
+  width:100%;
+  border:1px solid rgba(231,226,216,1);
+  border-radius: var(--radius);
+  background: rgba(255,255,255,.74);
+  box-shadow: var(--shadow);
+  padding:16px;
+  cursor:pointer;
+  transition: transform .18s ease, box-shadow .2s ease, border-color .2s ease, opacity .2s ease;
+  position:relative;
+  overflow:hidden;
+}
+
+.help-item h3{
+  margin:0 0 6px;
+  font-size:18px;
+}
+
+.help-item p{
+  margin:0;
+  color: var(--muted);
+}
+
+/* Active vs inactive */
+.help-item.is-active{
+  border-color: rgba(31,111,235,.35);
+  box-shadow: 0 22px 52px rgba(17,20,24,.14);
+  transform: translateY(-2px);
+}
+
+.help-item.is-dim{
+  opacity:.72;
+  transform:none;
+}
+
+/* Right detail panel */
+.help-detail{
+  border:1px solid rgba(231,226,216,1);
+  border-radius: var(--radius);
+  background: rgba(255,255,255,.82);
+  box-shadow: var(--shadow);
+  position:relative;
+  overflow:hidden;
+}
+
+.help-detail-inner{
+  padding:18px;
+}
+
+.help-detail-head h3{
+  margin:0 0 6px;
+  font-size:20px;
+}
+
+.help-bullets{
+  margin:12px 0 0;
+  padding-left: 18px;
+  color: var(--text);
+}
+
+.help-bullets li{
+  margin:8px 0;
+  color: var(--muted);
+}
+
+.help-detail-cta{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:16px;
+}
+
+/* Desktop: 2-column, “detail panel” stays put */
+@media (min-width: 900px){
+  .help-split{
+    grid-template-columns: 1fr 1.1fr;
+  }
+}
+
+/* Mobile: hide master-detail, use accordion */
+.help-accordion{ display:block; margin-top:12px; }
+@media (min-width: 900px){
+  .help-accordion{ display:none; }
+}
+
+/* details styling */
+.help-accordion details{
+  border:1px solid rgba(231,226,216,1);
+  border-radius: var(--radius);
+  background: rgba(255,255,255,.74);
+  box-shadow: var(--shadow);
+  padding:14px 16px;
+  margin-bottom:12px;
+}
+
+.help-accordion summary{
+  cursor:pointer;
+  font-weight:700;
+  list-style:none;
+}
+
+.help-accordion summary::-webkit-details-marker{
+  display:none;
+}
+
     /* ============================================================
        2) Base / Resets
        ============================================================ */
@@ -597,40 +720,114 @@
     <!-- ==========================================================
          Help / Services
          ========================================================== -->
-    <section id="help">
-      <h2 class="section-title">How I Can Help</h2>
-      <p class="section-lede">
-Plain-English work that helps teams move faster, reduce risk, and stay consistent as they grow.
-      </p>
+   <section id="help">
+  <h2 class="section-title">How I Can Help</h2>
+  <p class="section-lede">
+    Plain-English work that helps teams move faster, reduce risk, and stay consistent as they grow.
+  </p>
 
-      <div class="cols">
-        <div class="callout surface">
-          <h3>UX Strategy for Complex Workflows</h3>
-          <p>I turn messy processes into clear paths, removing friction so people move faster, feel confident, and make fewer mistakes.</p>
+  <!-- HELP: Master-detail layout (cards on left, expanded detail on right) -->
+  <div class="help-split" aria-label="Services list with expanded details">
+    <!-- LEFT: selectable service cards -->
+    <div class="help-list" role="tablist" aria-label="Service areas">
+      <button class="help-item is-active" role="tab" aria-selected="true" data-service="ux">
+        <h3>UX Strategy for Complex Workflows</h3>
+        <p>I turn messy processes into clear paths, removing friction so people move faster and make fewer mistakes.</p>
+      </button>
+
+      <button class="help-item" role="tab" aria-selected="false" data-service="systems">
+        <h3>Design Systems and UI Architecture</h3>
+        <p>I create building blocks and simple guidelines so everything looks and behaves consistently as you grow.</p>
+      </button>
+
+      <button class="help-item" role="tab" aria-selected="false" data-service="brand">
+        <h3>Brand Strategy, Copywriting, and Visual Design</h3>
+        <p>I shape brands that sound human and look modern, in a way people remember and trust.</p>
+      </button>
+
+      <button class="help-item" role="tab" aria-selected="false" data-service="training">
+        <h3>Training That Scales</h3>
+        <p>We capture your process and turn it into onboarding, training, and playbooks so the work stays good as the team grows.</p>
+      </button>
+    </div>
+
+    <!-- RIGHT: detail panel (updates based on selection) -->
+    <div class="help-detail" role="tabpanel" aria-live="polite">
+      <div class="help-detail-inner">
+        <div class="help-detail-head">
+          <h3 id="helpDetailTitle">UX Strategy for Complex Workflows</h3>
+          <p id="helpDetailDesc" class="fine">
+            Great when the work is high-stakes, cross-team, and the current process creates rework, confusion, or missed steps.
+          </p>
         </div>
 
-        <div class="callout surface">
-          <h3>Design Systems and UI Architecture</h3>
-          <p>I create design building blocks and simple guidelines so everything looks and behaves consistently as you grow, one product, not ten pages designed on ten different days.</p>
-        </div>
+        <ul id="helpDetailBullets" class="help-bullets">
+          <li>Workflow mapping that shows where people get stuck</li>
+          <li>Role-based paths and guardrails to reduce mistakes</li>
+          <li>Clear requirements and edge cases so dev can ship confidently</li>
+          <li>Prototype + validate before you build the expensive thing</li>
+          <li>Simple, practical handoff that holds up in the real world</li>
+        </ul>
 
-        <div class="callout surface">
-          <h3>Brand Strategy, Copywriting, and Visual Design</h3>
-          <p>I combine research with what you already know about your customers to shape a brand that sounds human and looks modern, in a way people remember and trust.</p>
+        <div class="help-detail-cta">
+          <a class="btn" href="#contact">Talk it through</a>
+          <a class="btn ghost" href="#work">See examples</a>
         </div>
+      </div>
+    </div>
+  </div>
 
-        <div class="callout surface">
-          <h3>Training That Scales</h3>
-          <p>Growth breaks when the know-how lives with one person. We capture your process and turn it into clear onboarding, training, and resources. We’ll take your best performing employees and create repeatable processes and playbooks that upskill everyone from tenured employees to new hires.</p>
-          <ul class="bullets">
-          <li>New-hire onboarding that doesn’t rely on one “go ask Sarah” person</li>
-          <li>Workshops to roll out changes without confusion</li>
-          <li>Step-by-step “how we do it here” guides</li>
-          <li>Playbooks, checklists, and job aids people actually use</li>
-          <li>Simple standards that keep quality consistent</li>
-          </ul>
-        </div>
-    </section>
+  <!-- Mobile fallback: inline accordion view (auto-enabled via CSS) -->
+  <div class="help-accordion" aria-label="Service details (mobile)">
+    <details open>
+      <summary>UX Strategy for Complex Workflows</summary>
+      <p class="fine">Great when the work is high-stakes, cross-team, and the current process creates rework, confusion, or missed steps.</p>
+      <ul class="help-bullets">
+        <li>Workflow mapping that shows where people get stuck</li>
+        <li>Role-based paths and guardrails to reduce mistakes</li>
+        <li>Clear requirements and edge cases so dev can ship confidently</li>
+        <li>Prototype + validate before you build the expensive thing</li>
+        <li>Simple, practical handoff that holds up in the real world</li>
+      </ul>
+    </details>
+
+    <details>
+      <summary>Design Systems and UI Architecture</summary>
+      <p class="fine">Best when the product is growing and “consistent” is becoming a full-time job.</p>
+      <ul class="help-bullets">
+        <li>Component inventory and standards that reduce redesign</li>
+        <li>Patterns for forms, tables, empty states, and errors</li>
+        <li>Spacing, typography, and layout rules that scale</li>
+        <li>Accessible-by-default choices, so fewer surprises later</li>
+        <li>Practical documentation developers actually use</li>
+      </ul>
+    </details>
+
+    <details>
+      <summary>Brand Strategy, Copywriting, and Visual Design</summary>
+      <p class="fine">Best when the product is strong but the story, visuals, or messaging feel scattered.</p>
+      <ul class="help-bullets">
+        <li>Clear positioning and a voice that sounds human</li>
+        <li>Messaging frameworks that stay consistent across channels</li>
+        <li>Visual systems that look modern without trying too hard</li>
+        <li>Copy that explains complex things in plain language</li>
+        <li>Lightweight guidelines your team can reuse</li>
+      </ul>
+    </details>
+
+    <details>
+      <summary>Training That Scales</summary>
+      <p class="fine">Growth breaks when the know-how lives with one person. We turn process into repeatable onboarding and playbooks.</p>
+      <ul class="help-bullets">
+        <li>New-hire onboarding that doesn’t rely on one “go ask Sarah” person</li>
+        <li>Step-by-step “how we do it here” guides</li>
+        <li>Playbooks and checklists people actually use</li>
+        <li>Workshops to roll out changes without confusion</li>
+        <li>Simple standards that keep quality consistent</li>
+      </ul>
+    </details>
+  </div>
+</section>
 
     <!-- ==========================================================
          Approach
@@ -811,6 +1008,101 @@ Plain-English work that helps teams move faster, reduce risk, and stay consisten
       }
       Calendly.initPopupWidget({ url: url });
     }
+
+     // Service detail content (single source of truth)
+  const HELP_DETAILS = {
+    ux: {
+      title: "UX Strategy for Complex Workflows",
+      desc: "Great when the work is high-stakes, cross-team, and the current process creates rework, confusion, or missed steps.",
+      bullets: [
+        "Workflow mapping that shows where people get stuck",
+        "Role-based paths and guardrails to reduce mistakes",
+        "Clear requirements and edge cases so dev can ship confidently",
+        "Prototype + validate before you build the expensive thing",
+        "Simple, practical handoff that holds up in the real world"
+      ]
+    },
+    systems: {
+      title: "Design Systems and UI Architecture",
+      desc: "Best when the product is growing and “consistent” is becoming a full-time job.",
+      bullets: [
+        "Component inventory and standards that reduce redesign",
+        "Patterns for forms, tables, empty states, and errors",
+        "Spacing, typography, and layout rules that scale",
+        "Accessible-by-default choices, so fewer surprises later",
+        "Practical documentation developers actually use"
+      ]
+    },
+    brand: {
+      title: "Brand Strategy, Copywriting, and Visual Design",
+      desc: "Best when the product is strong but the story, visuals, or messaging feel scattered.",
+      bullets: [
+        "Clear positioning and a voice that sounds human",
+        "Messaging frameworks that stay consistent across channels",
+        "Visual systems that look modern without trying too hard",
+        "Copy that explains complex things in plain language",
+        "Lightweight guidelines your team can reuse"
+      ]
+    },
+    training: {
+      title: "Training That Scales",
+      desc: "Growth breaks when the know-how lives with one person. We turn process into repeatable onboarding and playbooks.",
+      bullets: [
+        "New-hire onboarding that doesn’t rely on one “go ask Sarah” person",
+        "Step-by-step “how we do it here” guides",
+        "Playbooks and checklists people actually use",
+        "Workshops to roll out changes without confusion",
+        "Simple standards that keep quality consistent"
+      ]
+    }
+  };
+
+  // Wire up master-detail clicks
+  (function initHelpMasterDetail(){
+    const items = Array.from(document.querySelectorAll(".help-item"));
+    const titleEl = document.getElementById("helpDetailTitle");
+    const descEl  = document.getElementById("helpDetailDesc");
+    const listEl  = document.getElementById("helpDetailBullets");
+
+    if (!items.length || !titleEl || !descEl || !listEl) return;
+
+    function render(key){
+      const data = HELP_DETAILS[key];
+      if (!data) return;
+
+      titleEl.textContent = data.title;
+      descEl.textContent  = data.desc;
+
+      listEl.innerHTML = "";
+      data.bullets.forEach(b => {
+        const li = document.createElement("li");
+        li.textContent = b;
+        listEl.appendChild(li);
+      });
+
+      // Visual selection state
+      items.forEach(btn => {
+        const active = btn.dataset.service === key;
+        btn.classList.toggle("is-active", active);
+        btn.classList.toggle("is-dim", !active);
+        btn.setAttribute("aria-selected", active ? "true" : "false");
+      });
+    }
+
+    items.forEach(btn => {
+      btn.addEventListener("click", () => render(btn.dataset.service));
+      btn.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          render(btn.dataset.service);
+        }
+      });
+    });
+
+    // Initialize to first active
+    const initial = items.find(b => b.classList.contains("is-active"))?.dataset.service || items[0].dataset.service;
+    render(initial);
+  })();
   </script>
 </body>
 </html>
