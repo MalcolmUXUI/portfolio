@@ -399,6 +399,7 @@
 /* ============================================================
    APPROACH (Process list)
    ============================================================ */
+
 .process{
   list-style: none;
   margin: 0;
@@ -412,7 +413,8 @@
   grid-template-columns: 52px 1fr;
   column-gap: 16px;
   align-items: start;
-  padding: 14px 0;
+
+  padding: 12px 0;
   border-top: 1px solid var(--border);
 }
 
@@ -421,79 +423,55 @@
   padding-top: 0;
 }
 
+/* Left column: number badge */
 .process-num{
   width: 40px;
   height: 40px;
   border-radius: 14px;
   display: grid;
   place-items: center;
+
   align-self: start;
   margin-top: 2px;
+
   border: 1px solid rgba(231,226,216,.9);
   background: rgba(17,20,24,.06);
 }
 
-/* Put the counter text on a pseudo so it can read counter(step) */
 .process-num::before{
   content: counter(step);
   font-size: 20px;
   font-weight: 800;
   line-height: 1;
-  color: rgba(17,20,24,.32);
+  color: rgba(17,20,24,.30);
 }
 
-/* Step colors */
-.process-step:nth-child(1) .process-num{
-  background: rgba(245,158,11,.14);
-  border-color: rgba(245,158,11,.22);
-}
-.process-step:nth-child(1) .process-num::before{ color: rgba(245,158,11,.75); }
-
-.process-step:nth-child(2) .process-num{
-  background: rgba(217,119,6,.13);
-  border-color: rgba(217,119,6,.22);
-}
-.process-step:nth-child(2) .process-num::before{ color: rgba(217,119,6,.75); }
-
-.process-step:nth-child(3) .process-num{
-  background: rgba(37,99,235,.12);
-  border-color: rgba(37,99,235,.22);
-}
-.process-step:nth-child(3) .process-num::before{ color: rgba(37,99,235,.72); }
-
-.process-step:nth-child(4) .process-num{
-  background: rgba(15,118,110,.12);
-  border-color: rgba(15,118,110,.22);
-}
-.process-step:nth-child(4) .process-num::before{ color: rgba(15,118,110,.74); }
-
-.process-step:nth-child(5) .process-num{
-  background: rgba(5,150,105,.12);
-  border-color: rgba(5,150,105,.22);
-}
-.process-step:nth-child(5) .process-num::before{ color: rgba(5,150,105,.74); }
-
-/* Right column */
+/* Right column: text stack */
 .process-body{
   min-width: 0;
+  display: grid;
+  row-gap: 6px; /* controls title-to-body spacing */
+}
+
+/* Tight, predictable margins (no surprise whitespace) */
+.process-title,
+.process-why,
+.process-out{
+  margin: 0;
 }
 
 .process-title{
-  margin: 0;
   font-size: 20px;
-  line-height: 1.2;
+  line-height: 1.18;
   letter-spacing: -.2px;
-  grid-column: 2;
 }
 
-.process-why{ 
-  margin: 4px 0 0;
-  grid-column: 2;
+.process-why{
+  color: var(--muted);
 }
-    
+
 .process-out{
-  margin: 6px 0 0; 
-grid-column: 2;
+  color: var(--muted);
 }
 
 .process-out strong{
@@ -501,11 +479,46 @@ grid-column: 2;
   font-weight: 700;
 }
 
+/* Step color tuning
+   - 2 is more purple
+   - 4 is more blue/green (cyan/teal)
+*/
+.process-step:nth-child(1) .process-num{
+  background: rgba(245,158,11,.14);
+  border-color: rgba(245,158,11,.22);
+}
+.process-step:nth-child(1) .process-num::before{ color: rgba(245,158,11,.78); }
+
+.process-step:nth-child(2) .process-num{
+  background: rgba(124,58,237,.14);     /* purple */
+  border-color: rgba(124,58,237,.24);
+}
+.process-step:nth-child(2) .process-num::before{ color: rgba(124,58,237,.78); }
+
+.process-step:nth-child(3) .process-num{
+  background: rgba(37,99,235,.12);      /* blue */
+  border-color: rgba(37,99,235,.22);
+}
+.process-step:nth-child(3) .process-num::before{ color: rgba(37,99,235,.74); }
+
+.process-step:nth-child(4) .process-num{
+  background: rgba(6,182,212,.14);      /* blue/green (cyan) */
+  border-color: rgba(6,182,212,.24);
+}
+.process-step:nth-child(4) .process-num::before{ color: rgba(6,182,212,.78); }
+
+.process-step:nth-child(5) .process-num{
+  background: rgba(5,150,105,.12);      /* green-teal */
+  border-color: rgba(5,150,105,.22);
+}
+.process-step:nth-child(5) .process-num::before{ color: rgba(5,150,105,.76); }
+
+/* Small screens */
 @media (max-width: 520px){
   .process-step{
     grid-template-columns: 44px 1fr;
     column-gap: 12px;
-    padding: 12px 0;
+    padding: 10px 0;
   }
 
   .process-num{
@@ -517,10 +530,8 @@ grid-column: 2;
 
   .process-num::before{ font-size: 17px; }
   .process-title{ font-size: 18px; }
-  .process-why{ margin-top: 3px; }
-  .process-out{ margin-top: 5px; }
+  .process-body{ row-gap: 5px; }
 }
-
     /* ============================================================
        11) About Grid
        ============================================================ */
@@ -1010,80 +1021,73 @@ grid-column: 2;
     <ol class="process" aria-label="Project process steps">
 <li class="process-step">
   <span class="process-num" aria-hidden="true"></span>
+
   <div class="process-body">
     <h3 class="process-title">Define the Target</h3>
-      
-        <p class="fine process-why">
-          We agree on the real problem, the users involved, and what success looks like. This prevents solving the wrong thing elegantly.
-        </p>
-        <p class="fine process-out">
-          <strong>Output:</strong> a short problem statement, success criteria, and constraints.
-        </p>
-      </div>
-      </li>
+    <p class="fine process-why">
+      We agree on the real problem, the users involved, and what success looks like. This prevents solving the wrong thing elegantly.
+    </p>
+    <p class="fine process-out">
+      <strong>Output:</strong> a short problem statement, success criteria, and constraints.
+    </p>
+  </div>
+</li>
 
 <li class="process-step">
   <span class="process-num" aria-hidden="true"></span>
 
   <div class="process-body">
-          <h3 class="process-title">Map the Reality</h3>
-       
-        <p class="fine process-why">
-          We document the current workflow and handoffs, then mark where people get stuck, repeat questions, or make avoidable mistakes.
-        </p>
-        <p class="fine process-out">
-          <strong>Output:</strong> workflow map, friction points, and priority opportunities.
-        </p>
-    </div>
-      </li>
+    <h3 class="process-title">Map the Reality</h3>
+    <p class="fine process-why">
+      We document the current workflow and handoffs, then mark where people get stuck, repeat questions, or make avoidable mistakes.
+    </p>
+    <p class="fine process-out">
+      <strong>Output:</strong> workflow map, friction points, and priority opportunities.
+    </p>
+  </div>
+</li>
 
 <li class="process-step">
   <span class="process-num" aria-hidden="true"></span>
 
   <div class="process-body">
-          
-          <h3 class="process-title">Design the Next Version</h3>
- 
-        <p class="fine process-why">
-          We propose a clearer path with roles, steps, and guardrails, then make the next action obvious at every decision point.
-        </p>
-        <p class="fine process-out">
-          <strong>Output:</strong> proposed flow, UI structure, content guidelines, and edge cases.
-        </p>
-      </div>
-      </li>
+    <h3 class="process-title">Design the Next Version</h3>
+    <p class="fine process-why">
+      We propose a clearer path with roles, steps, and guardrails, then make the next action obvious at every decision point.
+    </p>
+    <p class="fine process-out">
+      <strong>Output:</strong> proposed flow, UI structure, content guidelines, and edge cases.
+    </p>
+  </div>
+</li>
 
 <li class="process-step">
   <span class="process-num" aria-hidden="true"></span>
 
   <div class="process-body">
-         
-          <h3 class="process-title">Validate Before You Build</h3>
-  
-        <p class="fine process-why">
-          We test the direction early, using lightweight prototypes or structured reviews, so you don’t pay engineering costs for assumptions.
-        </p>
-        <p class="fine process-out">
-          <strong>Output:</strong> validated changes, notes, and final decisions.
-        </p>
-      </div>
-      </li>
+    <h3 class="process-title">Validate Before You Build</h3>
+    <p class="fine process-why">
+      We test the direction early, using lightweight prototypes or structured reviews, so you don’t pay engineering costs for assumptions.
+    </p>
+    <p class="fine process-out">
+      <strong>Output:</strong> validated changes, notes, and final decisions.
+    </p>
+  </div>
+</li>
 
 <li class="process-step">
   <span class="process-num" aria-hidden="true"></span>
 
   <div class="process-body">
-          
-          <h3 class="process-title">Ship, Learn, Tighten</h3>
-        
-        <p class="fine process-why">
-          Once it’s live, we watch for repeat questions, missed steps, and support load, then tighten the system so it holds up over time.
-        </p>
-        <p class="fine process-out">
-          <strong>Output:</strong> iteration list, updated standards, and next improvements.
-        </p>
-      </div>
-      </li>
+    <h3 class="process-title">Ship, Learn, Tighten</h3>
+    <p class="fine process-why">
+      Once it’s live, we watch for repeat questions, missed steps, and support load, then tighten the system so it holds up over time.
+    </p>
+    <p class="fine process-out">
+      <strong>Output:</strong> iteration list, updated standards, and next improvements.
+    </p>
+  </div>
+</li>
     </ol>
   </div>
 </section>
