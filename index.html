@@ -302,8 +302,6 @@
 
     /* ============================================================
        8) Shared Card / Callout Surface
-       ------------------------------------------------------------
-       One consistent visual system for cards, callouts, schedule.
        ============================================================ */
     .surface{
       position:relative;
@@ -316,7 +314,6 @@
       transition: transform .18s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease;
     }
 
-    /* Accent strip across the top (consistent branding cue) */
     .surface::before{
       content:"";
       position:absolute;
@@ -330,7 +327,6 @@
       opacity:.55;
     }
 
-    /* Hover lift */
     .surface:hover{
       transform: translateY(-3px);
       border-color: rgba(31,111,235,.25);
@@ -338,7 +334,6 @@
       background: linear-gradient(180deg, rgba(255,255,255,.95), rgba(255,255,255,.78));
     }
 
-    /* Keyboard focus ring (rounded, consistent) */
     .surface:focus{ outline:none; }
     .surface:focus-visible{
       box-shadow: var(--focusRing), var(--shadow);
@@ -346,7 +341,7 @@
     }
 
     /* ============================================================
-       9) Work Cards Grid
+       9) Work Cards Grid + Pills
        ============================================================ */
     .grid{
       display:grid;
@@ -358,6 +353,7 @@
       grid-column: span 12;
       padding:18px;
     }
+
     .card h3{ margin:0 0 6px; font-size: 18px; }
     .meta{ color: var(--muted); margin:0 0 10px; }
 
@@ -369,7 +365,12 @@
       font-weight:600;
     }
 
-    .pillrow{ display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+    .pillrow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:10px;
+    }
 
     .pill{
       font-size: 13px;
@@ -378,6 +379,15 @@
       background: rgba(17,20,24,.04);
       border:1px solid var(--border);
       color: var(--muted);
+      text-transform: none; /* content is already Title Case */
+    }
+
+    /* Responsive pill density:
+       - Mobile: show only the core 2–3 pills.
+       - Desktop: reveal additional pills for richer scanning. */
+    .pill--desktop{ display:none; }
+    @media (min-width: 840px){
+      .pill--desktop{ display:inline-flex; }
     }
 
     /* ============================================================
@@ -395,7 +405,6 @@
       grid-template-columns: 1fr;
       gap:16px;
     }
-
     .about-h3{
       margin:0 0 8px;
       font-size: 18px;
@@ -469,7 +478,6 @@
       border-color: rgba(31,111,235,.35);
     }
 
-    /* Active vs inactive */
     .help-item.is-active{
       border-color: rgba(31,111,235,.35);
       box-shadow: 0 22px 52px rgba(17,20,24,.14);
@@ -481,7 +489,6 @@
       transform:none;
     }
 
-    /* Right detail panel */
     .help-detail{
       border:1px solid var(--border);
       border-radius: var(--radius);
@@ -527,12 +534,10 @@
       margin-top:16px;
     }
 
-    /* Desktop master-detail */
     @media (min-width: 900px){
       .help-split{ grid-template-columns: 1fr 1.1fr; }
     }
 
-    /* Mobile accordion fallback */
     .help-accordion{ display:block; margin-top:12px; }
     @media (min-width: 900px){
       .help-accordion{ display:none; }
@@ -558,8 +563,6 @@
 
     /* ============================================================
        13) Calendly Schedule Cards
-       ------------------------------------------------------------
-       Uses <button> for proper semantics and keyboard support.
        ============================================================ */
     .schedule-grid{
       display:grid;
@@ -572,10 +575,10 @@
       width:100%;
       padding:18px;
       cursor:pointer;
-      background: none; /* surface handles background */
-      border: none;     /* remove default button border */
+      background: none;
+      border: none;
       font: inherit;
-      color: inherit;   /* key fix: do not force black */
+      color: inherit;
     }
 
     .schedule-top{
@@ -597,10 +600,9 @@
     .dot-30{ background: rgba(163,230,53,.95); }
     .dot-60{ background: rgba(34,197,94,.95); }
 
-    /* Typography aligned to other cards */
     .schedule-title{
       margin:0;
-      font-size: 18px;  /* matches .card h3 */
+      font-size: 18px;
       line-height: 1.2;
       letter-spacing: -.2px;
     }
@@ -711,10 +713,16 @@
         <article class="card surface">
           <h3>BigIron</h3>
           <p class="meta">Item-focused redesign for inventory intake and operational workflows across teams.</p>
-          <div class="pillrow">
-            <span class="pill">Complex workflows</span>
-            <span class="pill">Role-based views</span>
-            <span class="pill">Standardization</span>
+          <div class="pillrow" aria-label="Key skills used">
+            <!-- Mobile-first (core set) -->
+            <span class="pill">Workflow Design</span>
+            <span class="pill">Operational UX</span>
+            <span class="pill">Role-Based Paths</span>
+
+            <!-- Desktop-only (adds richness) -->
+            <span class="pill pill--desktop">Intake Standardization</span>
+            <span class="pill pill--desktop">Edge Cases</span>
+            <span class="pill pill--desktop">Handoff Clarity</span>
           </div>
           <p class="win">The win: Guided intake plus role-based views turned rework into a first-pass standard.</p>
         </article>
@@ -722,10 +730,16 @@
         <article class="card surface">
           <h3>Cedar Bluff Technologies</h3>
           <p class="meta">Co-created a fundable product concept that prevents bad data at the source during equipment intake.</p>
-          <div class="pillrow">
-            <span class="pill">Product story</span>
-            <span class="pill">Trust and clarity</span>
-            <span class="pill">Investor-ready narrative</span>
+          <div class="pillrow" aria-label="Key skills used">
+            <!-- Mobile-first (core set) -->
+            <span class="pill">Product Narrative</span>
+            <span class="pill">UX + Brand Alignment</span>
+            <span class="pill">Clarity In Messaging</span>
+
+            <!-- Desktop-only (adds richness) -->
+            <span class="pill pill--desktop">Investor Storytelling</span>
+            <span class="pill pill--desktop">Value Proposition</span>
+            <span class="pill pill--desktop">Go-To-Market Support</span>
           </div>
           <p class="win">The win: A believable story and experience direction for accuracy at the moment records are created.</p>
         </article>
@@ -733,10 +747,16 @@
         <article class="card surface">
           <h3>Moss Rock Ranch</h3>
           <p class="meta">Defined the brand foundation for a digital overhaul, preserved through a store-first pivot.</p>
-          <div class="pillrow">
-            <span class="pill">Brand strategy</span>
-            <span class="pill">Voice and tone</span>
-            <span class="pill">Audience segments</span>
+          <div class="pillrow" aria-label="Key skills used">
+            <!-- Mobile-first (core set) -->
+            <span class="pill">Brand Strategy</span>
+            <span class="pill">Voice + Tone</span>
+            <span class="pill">Audience Segments</span>
+
+            <!-- Desktop-only (adds richness) -->
+            <span class="pill pill--desktop">Positioning</span>
+            <span class="pill pill--desktop">Messaging Framework</span>
+            <span class="pill pill--desktop">Visual System Direction</span>
           </div>
           <p class="win">The win: A clear brand system the owners could use immediately, and reuse later.</p>
         </article>
@@ -752,9 +772,7 @@
         Plain-English work that helps teams move faster, reduce risk, and stay consistent as they grow.
       </p>
 
-      <!-- HELP: Master-detail layout (cards on left, expanded detail on right) -->
       <div class="help-split" aria-label="Services list with expanded details">
-        <!-- LEFT: selectable service cards -->
         <div class="help-list" role="tablist" aria-label="Service areas">
           <button class="help-item is-active" role="tab" aria-selected="true" aria-controls="help-panel" data-service="ux" type="button">
             <h3>UX Strategy for Complex Workflows</h3>
@@ -777,7 +795,6 @@
           </button>
         </div>
 
-        <!-- RIGHT: detail panel (updates based on selection) -->
         <div id="help-panel" class="help-detail" role="tabpanel" aria-live="polite">
           <div class="help-detail-inner">
             <div class="help-detail-head">
@@ -803,7 +820,6 @@
         </div>
       </div>
 
-      <!-- Mobile fallback: inline accordion view (auto-enabled via CSS) -->
       <div class="help-accordion" aria-label="Service details (mobile)">
         <details open>
           <summary>UX Strategy for Complex Workflows</summary>
@@ -858,18 +874,81 @@
     <!-- ==========================================================
          Approach
          ========================================================== -->
-    <section id="approach">
-      <h2 class="section-title">How We’ll Tackle It</h2>
-      <p class="section-lede">
-        A simple process that keeps us honest, avoids rework, and gets to a result you can ship.
-      </p>
+  <section id="approach">
+  <h2 class="section-title">How We’ll Tackle It</h2>
+  <p class="section-lede">
+    A practical sequence that reduces rework, keeps decisions grounded, and gets you to something you can ship with confidence.
+  </p>
 
-      <div class="callout surface">
-        <p class="fine">
-          We start by defining the real problem and what success looks like. Then we map where people get stuck, validate the direction early, and iterate until the experience feels obvious. If it ships, we listen for feedback and close the loop with clear next steps.
+  <div class="callout surface">
+    <ol class="process" aria-label="Project process steps">
+      <li class="process-step">
+        <div class="process-head">
+          <span class="process-num" aria-hidden="true">1</span>
+          <h3 class="process-title">Define the Target</h3>
+        </div>
+        <p class="fine process-why">
+          We agree on the real problem, the users involved, and what success looks like. This prevents solving the wrong thing elegantly.
         </p>
-      </div>
-    </section>
+        <p class="fine process-out">
+          Output: a short problem statement, success criteria, and constraints.
+        </p>
+      </li>
+
+      <li class="process-step">
+        <div class="process-head">
+          <span class="process-num" aria-hidden="true">2</span>
+          <h3 class="process-title">Map the Reality</h3>
+        </div>
+        <p class="fine process-why">
+          We document the current workflow and handoffs, then mark where people get stuck, repeat questions, or make avoidable mistakes.
+        </p>
+        <p class="fine process-out">
+          Output: workflow map, friction points, and priority opportunities.
+        </p>
+      </li>
+
+      <li class="process-step">
+        <div class="process-head">
+          <span class="process-num" aria-hidden="true">3</span>
+          <h3 class="process-title">Design the Next Version</h3>
+        </div>
+        <p class="fine process-why">
+          We propose a clearer path with roles, steps, and guardrails, then make the next action obvious at every decision point.
+        </p>
+        <p class="fine process-out">
+          Output: proposed flow, UI structure, content guidelines, and edge cases.
+        </p>
+      </li>
+
+      <li class="process-step">
+        <div class="process-head">
+          <span class="process-num" aria-hidden="true">4</span>
+          <h3 class="process-title">Validate Before You Build</h3>
+        </div>
+        <p class="fine process-why">
+          We test the direction early, using lightweight prototypes or structured reviews, so you don’t pay engineering costs for assumptions.
+        </p>
+        <p class="fine process-out">
+          Output: validated changes, notes, and final decisions.
+        </p>
+      </li>
+
+      <li class="process-step">
+        <div class="process-head">
+          <span class="process-num" aria-hidden="true">5</span>
+          <h3 class="process-title">Ship, Learn, Tighten</h3>
+        </div>
+        <p class="fine process-why">
+          Once it’s live, we watch for repeat questions, missed steps, and support load, then tighten the system so it holds up over time.
+        </p>
+        <p class="fine process-out">
+          Output: iteration list, updated standards, and next improvements.
+        </p>
+      </li>
+    </ol>
+  </div>
+</section>
 
     <!-- ==========================================================
          About
@@ -888,10 +967,10 @@
           </p>
 
           <div class="pillrow" style="margin-top:12px;">
-            <span class="pill">Workflow clarity</span>
-            <span class="pill">Design systems</span>
-            <span class="pill">Brand + UX alignment</span>
-            <span class="pill">Research-driven</span>
+            <span class="pill">Workflow Clarity</span>
+            <span class="pill">Design Systems</span>
+            <span class="pill">Brand + UX Alignment</span>
+            <span class="pill pill--desktop">Research-Driven</span>
           </div>
         </div>
 
@@ -991,7 +1070,6 @@
         </button>
       </div>
 
-      <!-- Tiny footnote under the schedule cards -->
       <p class="fine schedule-footnote">
         Scheduling opens in Calendly. You may see a quick cookie prompt before selecting a time.
       </p>
@@ -1016,9 +1094,6 @@
 
   <!-- ==========================================================
        Calendly popup widget assets
-       Notes:
-       - Cookie banner is controlled by Calendly.
-       - If an event shows “unavailable,” check the Event Type’s scheduling hours and calendar connections.
        ========================================================== -->
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
   <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
