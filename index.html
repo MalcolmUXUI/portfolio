@@ -428,36 +428,36 @@
   width: 44px;
   height: 44px;
   border-radius: 14px;
-
   font-size: 22px;
   font-weight: 800;
   line-height: 1;
-
+align-self: start;
+  margin-top: 2px;
   /* default fallback */
   color: rgba(17,20,24,.32);
   background: rgba(17,20,24,.06);
 }
 
-/* Step-specific tint + numeral color */
+/* Step-specific tint + numeral color (more distinct) */
 .process-step:nth-child(1)::before{
-  color: rgba(245,158,11,.55);
-  background: rgba(245,158,11,.14);
+  color: rgba(245,158,11,.70);      /* amber */
+  background: rgba(245,158,11,.16);
 }
 .process-step:nth-child(2)::before{
-  color: rgba(245,158,11,.45);
-  background: rgba(245,158,11,.10);
+  color: rgba(217,119,6,.70);       /* burnt amber */
+  background: rgba(217,119,6,.14);
 }
 .process-step:nth-child(3)::before{
-  color: rgba(37,99,235,.50);
-  background: rgba(37,99,235,.12);
+  color: rgba(37,99,235,.70);       /* blue */
+  background: rgba(37,99,235,.14);
 }
 .process-step:nth-child(4)::before{
-  color: rgba(15,118,110,.50);
-  background: rgba(15,118,110,.12);
+  color: rgba(15,118,110,.72);      /* teal */
+  background: rgba(15,118,110,.14);
 }
 .process-step:nth-child(5)::before{
-  color: rgba(15,118,110,.38);
-  background: rgba(15,118,110,.09);
+  color: rgba(5,150,105,.70);       /* green-teal (more green than step 4) */
+  background: rgba(5,150,105,.14);
 }
 
 /* Keep all content in the right column */
@@ -475,15 +475,21 @@
 }
 
 /* Tighten paragraph spacing so it stays with its title */
-.process-why,
+.process-why{
+  margin: 4px 0 0;          /* was 6px */
+}
+
 .process-out{
-  margin: 6px 0 0; /* closer to title */
+  margin: 6px 0 0;          /* keeps Output attached but distinct */
 }
 
 /* Create clear separation before the NEXT step/title */
 .process-step{
   margin-bottom: 10px;
+    padding: 10px 0;          /* was 14px 0 */
+  row-gap: 0;               /* just to be explicit */
 }
+    
 .process-step:last-child{
   margin-bottom: 0;
 }
@@ -506,7 +512,10 @@
     border-radius: 12px;
     font-size: 18px;
   }
-  .process-title{ font-size: 18px; }
+  .process-title{ 
+    font-size: 18px; 
+      margin: 0;                /* keep it crisp */
+  }
 }
 
     /* ============================================================
