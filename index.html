@@ -706,17 +706,19 @@
     }
 
     .schedule-card{
- appearance:none;
-  -webkit-appearance:none;
+      appearance:none;
+      -webkit-appearance:none;
       text-align:left;
       width:100%;
       padding:18px;
       cursor:pointer;
-      background: transparent;
-      border: 0;
+      background: none;   /* let .surface control the card background */
+      border: 0; /* surface provides the outer border */
       font: inherit;
       color: inherit;
     }
+
+    .schedule-card:focus{ outline: none; }
 
     .schedule-top{
       display:flex;
@@ -770,7 +772,12 @@
       margin-top: 12px;
       font-style: italic;
     }
-
+.no-hover:hover{
+  transform: none;
+  border-color: var(--border);
+  box-shadow: var(--shadow);
+  background: linear-gradient(180deg, var(--cardTop), var(--cardBottom));
+}
     /* ============================================================
        14) Footer
        ============================================================ */
@@ -785,7 +792,7 @@
        15) Responsive rules
        ============================================================ */
     @media (min-width: 840px){
-      .about-grid{ grid-template-columns: 1fr 1fr 1fr; }
+      .about-grid{ grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
       .schedule-grid{ grid-template-columns: 1fr 1fr 1fr; }
       .card{ grid-column: span 4; }
     }
@@ -1090,6 +1097,59 @@
 </li>
     </ol>
   </div>
+
+<div class="callout surface">
+  <h3 class="about-h3">Why I work this way</h3>
+
+  <p class="fine" style="margin:0;">
+    I came up through hospitality and high-touch customer experience, so I’m tuned for clarity, trust, and decision-making under pressure. If someone has to ask “what do I do next” twice, the process is the problem, not the person.
+  </p>
+
+  <p class="fine" style="margin-top:10px;">
+    Today I bring that same mindset to complex products, internal tools, and brands: reduce confusion, tighten handoffs, and build systems that hold up when the team grows, the stakes rise, and the work gets busy.
+  </p>
+</div>
+    
+    <div class="fine" style="margin-top:14px;">
+  <p style="margin:0 0 10px; color:var(--muted);">
+    A few things teammates and leaders have said about working with me:
+  </p>
+
+  <ul style="list-style:none; margin:0; padding:0; display:grid; gap:12px;">
+    <li style="margin:0; padding:0;">
+      <blockquote style="margin:0; padding:0 0 0 14px; border-left:3px solid rgba(37,99,235,.28);">
+        <p style="margin:0; font-style:italic; color:var(--text);">
+          “Mark takes initiative and really takes the time to understand user needs. I was impressed with his ability to take complex feedback and simplify it into simple solutions in a timely manner.”
+        </p>
+        <footer style="margin-top:6px; color:var(--muted);">
+          <strong style="color:var(--text); font-weight:700;">Kai Mills</strong><span> · </span><span>Creative Project Professional</span>
+        </footer>
+      </blockquote>
+    </li>
+
+    <li style="margin:0; padding:0;">
+      <blockquote style="margin:0; padding:0 0 0 14px; border-left:3px solid rgba(245,158,11,.30);">
+        <p style="margin:0; font-style:italic; color:var(--text);">
+          “Mark goes the extra step to ensure his design is thorough and truly addressing the users’ needs. He’s diligent in his research and backs up every decision with well constructed reasoning.”
+        </p>
+        <footer style="margin-top:6px; color:var(--muted);">
+          <strong style="color:var(--text); font-weight:700;">Alan Donth</strong><span> · </span><span>UX/Product @ Accenture</span>
+        </footer>
+      </blockquote>
+    </li>
+
+    <li style="margin:0; padding:0;">
+      <blockquote style="margin:0; padding:0 0 0 14px; border-left:3px solid rgba(15,118,110,.26);">
+        <p style="margin:0; font-style:italic; color:var(--text);">
+          “Mark makes the role of project manager a lot easier, and listens and respects everyone on the team’s thoughts and opinions.”
+        </p>
+        <footer style="margin-top:6px; color:var(--muted);">
+          <strong style="color:var(--text); font-weight:700;">Michael McTavish</strong><span> · </span><span>Program Manager</span>
+        </footer>
+      </blockquote>
+    </li>
+  </ul>
+</div>
 </section>
 
     <!-- ==========================================================
@@ -1106,23 +1166,6 @@
           <h3 class="about-h3">What I’m known for</h3>
           <p class="fine">
             Strategy that stays practical. Interfaces that feel cohesive. Clear communication that helps teams ship without chaos.
-          </p>
-
-          <div class="pillrow" style="margin-top:12px;">
-            <span class="pill">Workflow Clarity</span>
-            <span class="pill">Design Systems</span>
-            <span class="pill">Brand + UX Alignment</span>
-            <span class="pill pill--desktop">Research-Driven</span>
-          </div>
-        </div>
-
-        <div class="callout surface">
-          <h3 class="about-h3">Why I work this way</h3>
-          <p class="fine">
-            I came up through hospitality and high-touch customer experience, so my instincts are tuned for clarity, trust, and decision-making under pressure.
-          </p>
-          <p class="fine" style="margin-top:10px;">
-            Today I apply that same mindset to complex products, internal tools, and brands that need to feel modern and reliable.
           </p>
         </div>
 
@@ -1149,6 +1192,7 @@
           class="schedule-card surface"
           type="button"
           onclick="openCalendly('https://calendly.com/mark-w3m/15-min-chat')"
+          aria-haspopup="dialog"
           aria-label="Book a 15 minute chat"
         >
           <div class="schedule-top">
@@ -1171,6 +1215,7 @@
           class="schedule-card surface"
           type="button"
           onclick="openCalendly('https://calendly.com/mark-w3m/30-min-alignment')"
+          aria-haspopup="dialog"
           aria-label="Book a 30 minute meeting"
         >
           <div class="schedule-top">
@@ -1193,6 +1238,7 @@
           class="schedule-card surface"
           type="button"
           onclick="openCalendly('https://calendly.com/mark-w3m/60-min-consult')"
+          aria-haspopup="dialog"
           aria-label="Book a 60 minute consult"
         >
           <div class="schedule-top">
@@ -1216,7 +1262,7 @@
         Scheduling opens in Calendly. You may see a quick cookie prompt before selecting a time.
       </p>
 
-      <div class="callout surface" style="margin-top:16px;">
+      <div class="callout surface no-hover" style="margin-top:16px;">
         <p class="fine">
           Prefer email?
           <a href="mailto:mark@we3.design" style="color:var(--accent); text-decoration:underline;">
